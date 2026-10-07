@@ -285,3 +285,4 @@ The application thoroughly handles and validates edge cases both client-side and
 2. **Matching Engine**: Automatically notify registered planners, performers, and crew whose profiles match newly posted requirements.
 3. **File Attachments**: Upload rider contracts, demo MP3/MP4 files, and floor plans.
 4. **Email / SMS Alerts**: Real-time notifications via SendGrid/Twilio upon requirement submission.
+
