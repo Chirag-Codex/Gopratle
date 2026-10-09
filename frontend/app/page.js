@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const API_URL = process.env.API_URL || "http://localhost:5000/api";
+const API_URL = process.env.API_URL || "https://gopratle-vt95.onrender.com/api";
 
 export default function Home() {
 
