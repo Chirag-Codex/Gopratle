@@ -225,7 +225,11 @@ export default function Home() {
       if (data.success) {
         setStep(5); 
       } else {
-        setErrorMessage(data.message || "Something went wrong.");
+        let msg = data.message || "Submission failed";
+        if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
+          msg = data.errors.map((e) => e.message).join(" • ");
+        }
+        setErrorMessage(msg);
       }
     } catch (err) {
       setErrorMessage("Could not connect to backend server. Make sure backend is running.");
@@ -309,8 +313,6 @@ export default function Home() {
                   <option value="concert">Concert</option>
                   <option value="festival">Festival</option>
                   <option value="birthday">Birthday</option>
-                  <option value="conference">Conference</option>
-                  <option value="private-party">Private Party</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -426,7 +428,6 @@ export default function Home() {
                     >
                       <option value="full">Full Planning</option>
                       <option value="partial">Partial Planning</option>
-                      <option value="day-of-coordination">Day-of Coordination</option>
                     </select>
                   </div>
                 </div>
@@ -438,9 +439,7 @@ export default function Home() {
                       { id: "full-planning", label: "Full Planning" },
                       { id: "decor", label: "Decor" },
                       { id: "catering", label: "Catering" },
-                      { id: "logistics", label: "Logistics" },
-                      { id: "venue-sourcing", label: "Venue Sourcing" },
-                      { id: "vendor-management", label: "Vendor Management" },
+                      { id: "guest-management", label: "Guest Management" },
                     ].map((srv) => (
                       <label key={srv.id} className="flex items-center gap-2 cursor-pointer">
                         <input
@@ -472,8 +471,6 @@ export default function Home() {
                       <option value="band">Band</option>
                       <option value="dancer">Dancer</option>
                       <option value="comedian">Comedian</option>
-                      <option value="anchor">Anchor</option>
-                      <option value="other">Other</option>
                     </select>
                   </div>
                   <div>
@@ -528,8 +525,8 @@ export default function Home() {
                       <option value="security">Security</option>
                       <option value="sound">Sound Tech</option>
                       <option value="lighting">Lighting</option>
-                      <option value="stage-hand">Stage Hand</option>
-                      <option value="usher">Usher</option>
+                      <option value="photographer">Photographer</option>
+                      <option value="videographer">Videographer</option>
                       <option value="catering-staff">Catering Staff</option>
                     </select>
                   </div>
